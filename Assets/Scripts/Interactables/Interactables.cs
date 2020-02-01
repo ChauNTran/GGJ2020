@@ -5,7 +5,8 @@ using UnityEngine;
 public class Interactables : MonoBehaviour
 {
 
-
+    public float completePercentage;
+    public bool isDone;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
