@@ -3,7 +3,7 @@
 Roomba Cat game
 
 Summary:
-One player controlls a romba while the other player controlls a cat who is trying to prevent the romba from cleaning the house. 
+One player controls a romba while the other player controls a cat who is trying to prevent the romba from cleaning the house. 
 
 Victory condition for the romba:
 - Find the plunger to clean the toilet 
