@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class GameManager : MonoBehaviour
@@ -11,6 +13,9 @@ public class GameManager : MonoBehaviour
         get { return instance; }
     }
 
+    [SerializeField] public Text timerUI;
+
+    public float timeLeft = 180.0f;
     public List<Interactables> objectives = new List<Interactables>();
 
     private void Awake()
@@ -21,6 +26,23 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
     }
+
+    void Update()
+    {
+        runTimer();
+    }
+
+    public void runTimer(){
+        timeLeft -= Time.deltaTime;
+        //Debug.Log("Time left: " + Mathf.Round(Time.deltaTime));
+        //timeLeft = Mathf.Round(timeLeft);
+        timerUI.text = "Time Remaining: " + Mathf.RoundToInt(timeLeft).ToString();
+        if ( timeLeft < 0 )
+        {
+            //GameOver();
+        }
+    }
+
     public void ProcessObjective(bool isDone)
     {
 
