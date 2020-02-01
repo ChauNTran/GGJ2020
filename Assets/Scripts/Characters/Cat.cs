@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roomba : MonoBehaviour
+public class Cat : MonoBehaviour
 {
     [SerializeField] private string RoombaHorizontalMovementButton = "Horizontal";
     [SerializeField] private string RoombaVerticalMovementButton = "Vertical";
@@ -20,15 +20,15 @@ public class Roomba : MonoBehaviour
     {
         float x_value = 0;
         float y_value = 0;
-        if (Mathf.Abs(Input.GetAxis(RoombaHorizontalMovementButton)) > 0.5)
+        if (Mathf.Abs(Input.GetAxis(RoombaHorizontalMovementButton)) > 0.2)
         {
             x_value = Input.GetAxis(RoombaHorizontalMovementButton);
         }
-        else if (Mathf.Abs(Input.GetAxis(RoombaVerticalMovementButton)) > 0.5)
+        if (Mathf.Abs(Input.GetAxis(RoombaVerticalMovementButton)) > 0.2)
         {
             y_value = Input.GetAxis(RoombaVerticalMovementButton);
         }
-        else
+        if(x_value == 0f && y_value == 0f)
         {
             if (moveWithPhysics)
                 rigid.velocity = Vector2.zero;
@@ -52,6 +52,7 @@ public class Roomba : MonoBehaviour
     }
     void MoveTransform(float xVal, float yVal)
     {
+        //Debug.Log($"xVal {xVal} yVal {yVal}");
         transform.position += new Vector3(xVal * Time.deltaTime * speed, yVal * Time.deltaTime * speed, 0);
     }
 }
