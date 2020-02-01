@@ -41,6 +41,9 @@ public class Cat : MonoBehaviour,
     }
 
     [SerializeField] private bool moveWithPhysics = true;
+
+    private bool tookNap = true;
+
     private Rigidbody2D rigid;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -148,16 +151,24 @@ public class Cat : MonoBehaviour,
                 break;
         }
     }
+    public void setTookNap()
+    {
+        tookNap = true;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.GetComponentInParent<IBreakable>() != null)
+        if (tookNap != true)
+            return;
+
+        if (collision.collider.gameObject.GetComponentInParent<IBreakable>() != null)
         {
             if (collision.collider.gameObject.GetComponentInParent<IBreakable>().canMess)
             {
                 collision.collider.gameObject.GetComponentInParent<IBreakable>().MessUp();
+                tookNap = false;
                 Debug.Log("mess " + collision.collider.name);
             }
         }
     }
-
+    
 }
