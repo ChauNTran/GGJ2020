@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 7070019525284069087
     second: BonusPlant
+  - first:
+      213: 1734089330981326749
+    second: Toilet
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -103,7 +106,7 @@ TextureImporter:
         width: 30
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -124,7 +127,7 @@ TextureImporter:
         width: 28
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +148,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +156,27 @@ TextureImporter:
       bones: []
       spriteID: c49d99180ca88e54a99ecd63a64d5f18
       internalID: 7070019525284069087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toilet
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99044e9208d46f46aa2bf2abfbc018e
+      internalID: 1734089330981326749
       vertices: []
       indices: 
       edges: []
