@@ -148,4 +148,16 @@ public class Cat : MonoBehaviour,
                 break;
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.gameObject.GetComponentInParent<IBreakable>() != null)
+        {
+            if (collision.collider.gameObject.GetComponentInParent<IBreakable>().canMess)
+            {
+                collision.collider.gameObject.GetComponentInParent<IBreakable>().MessUp();
+                Debug.Log("mess " + collision.collider.name);
+            }
+        }
+    }
+
 }
