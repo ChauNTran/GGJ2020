@@ -43,7 +43,6 @@ public class Roomba : MonoBehaviour,
     private Animator animator;
     private SpriteRenderer sprite;
 
-
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -62,13 +61,22 @@ public class Roomba : MonoBehaviour,
         if (Mathf.Abs(Input.GetAxis(_horizontalButtonLabel)) > 0.5)
         {
             x_value = Input.GetAxis(_horizontalButtonLabel);
+            if (x_value < 0)
+                moveState = MoveState.moveLeft;
+            else
+                moveState = MoveState.moveRight;
         }
         else if (Mathf.Abs(Input.GetAxis(_verticalButtonLabel)) > 0.5)
         {
             y_value = Input.GetAxis(_verticalButtonLabel);
+            if (y_value < 0)
+                moveState = MoveState.moveDown;
+            else
+                moveState = MoveState.moveUp;
         }
         else
         {
+            moveState = MoveState.none;
             if (moveWithPhysics)
                 rigid.velocity = Vector2.zero;
             return;
@@ -94,37 +102,28 @@ public class Roomba : MonoBehaviour,
     {
         switch(movestate)
         {
+            case MoveState.none:
+                animator.SetTrigger("idle");
+                Debug.Log("play idle");
+                break;
             case MoveState.moveUp:
                 animator.SetTrigger("moveUp");
+                Debug.Log("play moveUp");
                 break;
             case MoveState.moveDown:
                 animator.SetTrigger("moveDown");
+                Debug.Log("play moveDown");
                 break;
             case MoveState.moveLeft:
                 animator.SetTrigger("moveLeftRight");
+                sprite.flipX = true;
+                Debug.Log("play moveLeftRight");
                 break;
             case MoveState.moveRight:
                 animator.SetTrigger("moveLeftRight");
+                sprite.flipX = false;
+                Debug.Log("play moveLeftRight");
                 break;
         }
-    }
-
-    void PlayMoveUpAnimation()
-    {
-        animator.SetBool("moveUp", true);
-    }
-    void PlayMoveDownAnimation()
-    {
-        animator.SetBool("moveDown", true);
-    }
-    void PlayLeftAnimation()
-    {
-        animator.SetBool("moveLeftRight", true);
-        sprite.flipY = true;
-    }
-    void PlayRightAnimation()
-    {
-        animator.SetBool("moveLeftRight", true);
-        sprite.flipY = true;
     }
 }

@@ -5,6 +5,21 @@ using UnityEngine;
 public class Cat : MonoBehaviour,
                    ICharacter
 {
+    public enum MoveState { none, moveUp, moveDown, moveLeft, moveRight }
+    private MoveState _moveState = MoveState.none;
+    public MoveState moveState
+    {
+        get { return moveState; }
+        set
+        {
+            if (value != _moveState)
+            {
+                _moveState = value;
+                PlayAnimation(_moveState);
+            }
+        }
+    }
+
     [SerializeField] private string _horizontalButtonLabel = "Horizontal";
     [SerializeField] private string _verticalButtonLabel = "Vertical";
     [SerializeField] private float _movementSpeed = 1.5f;
@@ -28,11 +43,13 @@ public class Cat : MonoBehaviour,
     [SerializeField] private bool moveWithPhysics = true;
     private Rigidbody2D rigid;
     private Animator animator;
+    private SpriteRenderer sprite;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -53,6 +70,7 @@ public class Cat : MonoBehaviour,
         }
         if (x_value == 0f && y_value == 0f)
         {
+            moveState = MoveState.none;
             if (moveWithPhysics)
                 rigid.velocity = Vector2.zero;
             return;
@@ -75,8 +93,71 @@ public class Cat : MonoBehaviour,
         //Debug.Log($"xVal {xVal} yVal {yVal}");
         transform.position += new Vector3(xVal * Time.deltaTime * _movementSpeed, yVal * Time.deltaTime * _movementSpeed, 0);
     }
-    void PlayAnimation(float xVal, float yVal)
+    void PlayAnimation(float xVal,float yVal)
     {
-
+        if (Mathf.Abs(Input.GetAxis(_verticalButtonLabel)) > Mathf.Abs(Input.GetAxis(_horizontalButtonLabel))) // vertical dominant
+        {
+            if (Input.GetAxis(_verticalButtonLabel) > 0)
+            {
+                moveState = MoveState.moveUp;
+            }
+            else
+            {
+                moveState = MoveState.moveDown;
+            }
+        }
+        else
+        {
+            if (Input.GetAxis(_horizontalButtonLabel) > 0)
+            {
+                moveState = MoveState.moveRight;
+            }
+            else
+            {
+                moveState = MoveState.moveLeft;
+            }
+        }
     }
+    void PlayAnimation(MoveState movestate)
+    {
+        switch (movestate)
+        {
+            case MoveState.none:
+                animator.SetTrigger("idle");
+                Debug.Log("play idle");
+                break;
+            case MoveState.moveUp:
+                animator.SetTrigger("moveUp");
+                Debug.Log("play moveUp");
+                break;
+            case MoveState.moveDown:
+                animator.SetTrigger("moveDown");
+                Debug.Log("play moveDown");
+                break;
+            case MoveState.moveLeft:
+                animator.SetTrigger("moveLeftRight");
+                sprite.flipX = true;
+                Debug.Log("play moveLeftRight");
+
+                break;
+            case MoveState.moveRight:
+                animator.SetTrigger("moveLeftRight");
+                sprite.flipX = false;
+                Debug.Log("play moveLeftRight");
+
+                break;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.gameObject.GetComponentInParent<IBreakable>() != null)
+        {
+            if (collision.collider.gameObject.GetComponentInParent<IBreakable>().canMess)
+            {
+                collision.collider.gameObject.GetComponentInParent<IBreakable>().MessUp();
+                Debug.Log("mess " + collision.collider.name);
+            }
+        }
+    }
+
 }
