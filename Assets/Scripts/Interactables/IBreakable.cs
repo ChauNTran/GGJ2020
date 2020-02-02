@@ -6,5 +6,4 @@ public interface IBreakable
 {
     bool canMess { get; set; }
     void MessUp();
-    void Fix();
 }
