@@ -43,9 +43,6 @@ public class Roomba : MonoBehaviour,
     private Animator animator;
     private SpriteRenderer sprite;
 
-    [HideInInspector]public bool hasTool = false;
-    [HideInInspector]public Tool currentTool = null;
-
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -128,21 +125,5 @@ public class Roomba : MonoBehaviour,
                 Debug.Log("play moveLeftRight");
                 break;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (hasTool)
-            return;
-        if(collider.gameObject.GetComponent<Tool>() != null)
-        {
-            currentTool = collider.gameObject.GetComponent<Tool>();
-            currentTool.PickUp();
-        }
-    }
-    public void removeTool()
-    {
-        hasTool = false;
-        currentTool = null;
     }
 }

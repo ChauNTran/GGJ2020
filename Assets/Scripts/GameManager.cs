@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Text timerUI;
 
     public float timeLeft = 180.0f;
+    public List<Interactables> objectives = new List<Interactables>();
 
     private void Awake()
     {
