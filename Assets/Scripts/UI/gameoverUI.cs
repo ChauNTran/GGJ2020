@@ -7,27 +7,27 @@ public class gameoverUI : MonoBehaviour
     [SerializeField] private GameObject timeoutGO;
     [SerializeField] private GameObject catWinGO;
     [SerializeField] private GameObject roombaWinGO;
-
+    [SerializeField] private GameObject gameOverPanel;
 
     private void Start()
     {
         timeoutGO.SetActive(false);
         catWinGO.SetActive(false);
         roombaWinGO.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 
     public void DisPlayTimeOut()
     {
+        gameOverPanel.SetActive(true);
         timeoutGO.SetActive(true);
-        Invoke("DisplayCatwin", 2f);
+        catWinGO.SetActive(true);
+
     }
     public void DisplayRoombaWin()
     {
+        gameOverPanel.SetActive(true);
         roombaWinGO.SetActive(true);
     }
-    public void DisplayCatwin()
-    {
-        timeoutGO.SetActive(false);
-        catWinGO.SetActive(true);
-    }
+
 }

@@ -60,11 +60,6 @@ public class UIManager : MonoBehaviour
         gameoverUIRoomba.DisplayRoombaWin();
         gameoverUICat.DisplayRoombaWin();
     }
-    public void DisplayCatwin()
-    {
-        gameoverUIRoomba.DisplayCatwin();
-        gameoverUICat.DisplayCatwin();
-    }
     public void SetPotUIActive()
     {
         dirtUIRoomba.setUIActive();
