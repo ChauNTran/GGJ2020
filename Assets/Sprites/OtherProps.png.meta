@@ -23,6 +23,18 @@ TextureImporter:
   - first:
       213: 802902076082368189
     second: Clothes_1
+  - first:
+      213: 316186749420508932
+    second: WashingMachine
+  - first:
+      213: 8710820032630935801
+    second: Trash_1
+  - first:
+      213: -1797384687075103460
+    second: OtherProps_0
+  - first:
+      213: 8119991477750277905
+    second: OtherProps_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -273,6 +285,90 @@ TextureImporter:
       bones: []
       spriteID: a1acea78ae8f63b498e4a4d622de7d31
       internalID: 802902076082368189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WashingMachine
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d93f9f363defc74fa93179537878408
+      internalID: 316186749420508932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 44
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11af087641576141aad188361a79311
+      internalID: 8710820032630935801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OtherProps_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 28
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 431fb0f6146c5a44fb943ad7fbfd2b5c
+      internalID: -1797384687075103460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OtherProps_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 28
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c71533435082b43b4cb61aabbb3f96
+      internalID: 8119991477750277905
       vertices: []
       indices: 
       edges: []
