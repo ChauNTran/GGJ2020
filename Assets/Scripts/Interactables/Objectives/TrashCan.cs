@@ -5,6 +5,13 @@ using UnityEngine;
 public class TrashCan : Objective,
                         IFixable
 {
+    [SerializeField] private GameObject TrashSprite;
+
+    void Start()
+    {
+        TrashSprite.SetActive(false);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.gameObject.GetComponent<Roomba>() != null)
@@ -25,6 +32,7 @@ public class TrashCan : Objective,
     public void Fix()
     {
         isCompleted = true;
+        TrashSprite.SetActive(true);
         GameManager.Instance.ObjectiveComplete(this);
         GameManager.Instance.UImanager.SetTrashComplete();
 
