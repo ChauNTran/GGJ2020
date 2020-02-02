@@ -1300,7 +1300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 595.75, y: 0}
+  m_AnchoredPosition: {x: 520.25, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36459661
@@ -1737,7 +1737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 595.75, y: 0}
+  m_AnchoredPosition: {x: 520.25, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141543518
@@ -3423,7 +3423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1727289845}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &691203857
@@ -5377,6 +5377,7 @@ MonoBehaviour:
   trashUIRoomba: {fileID: 1357526882}
   dirtUIRoomba: {fileID: 1357526884}
   gameoverUIRoomba: {fileID: 1357526885}
+  playagainButton: {fileID: 355355254}
   plungerUICat: {fileID: 717994960}
   clothesUICat: {fileID: 717994958}
   trashUICat: {fileID: 717994959}

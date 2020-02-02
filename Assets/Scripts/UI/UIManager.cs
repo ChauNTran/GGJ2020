@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     [Header("Roomba Canvas")]
@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private trashUI trashUIRoomba;
     [SerializeField] private dirtUI dirtUIRoomba;
     [SerializeField] private gameoverUI gameoverUIRoomba;
+    [SerializeField] private Button playagainButton;
     [Header("Cat Canvas")]
     [SerializeField] private plungerUIHandler plungerUICat;
     [SerializeField] private clothesUI clothesUICat;
@@ -54,11 +55,13 @@ public class UIManager : MonoBehaviour
     {
         gameoverUIRoomba.DisPlayTimeOut();
         gameoverUICat.DisPlayTimeOut();
+        EventSystem.current.SetSelectedGameObject(playagainButton.gameObject);
     }
     public void DisplayRoombaWin()
     {
         gameoverUIRoomba.DisplayRoombaWin();
         gameoverUICat.DisplayRoombaWin();
+        EventSystem.current.SetSelectedGameObject(playagainButton.gameObject);
     }
     public void SetPotUIActive()
     {
