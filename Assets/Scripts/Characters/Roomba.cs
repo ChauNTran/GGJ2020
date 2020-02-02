@@ -107,25 +107,20 @@ public class Roomba : MonoBehaviour,
         {
             case MoveState.none:
                 animator.SetTrigger("idle");
-                Debug.Log("play idle");
                 break;
             case MoveState.moveUp:
                 animator.SetTrigger("moveUp");
-                Debug.Log("play moveUp");
                 break;
             case MoveState.moveDown:
                 animator.SetTrigger("moveDown");
-                Debug.Log("play moveDown");
                 break;
             case MoveState.moveLeft:
                 animator.SetTrigger("moveLeftRight");
                 sprite.flipX = true;
-                Debug.Log("play moveLeftRight");
                 break;
             case MoveState.moveRight:
                 animator.SetTrigger("moveLeftRight");
                 sprite.flipX = false;
-                Debug.Log("play moveLeftRight");
                 break;
         }
     }

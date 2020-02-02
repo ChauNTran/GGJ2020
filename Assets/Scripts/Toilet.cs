@@ -7,14 +7,15 @@ public class Toilet : MonoBehaviour,
 {
 
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collider.gameObject.GetComponent<Roomba>()!=null)
+        if(collision.collider.gameObject.GetComponent<Roomba>() != null)
         {
-            if (collider.gameObject.GetComponent<Roomba>().currentTool is ToiletPlunger)
+            if (collision.collider.gameObject.GetComponent<Roomba>().currentTool is ToiletPlunger)
             {
-                collider.gameObject.GetComponent<Roomba>().removeTool();
                 Fix();
+                collision.collider.gameObject.GetComponent<Roomba>().removeTool();
+                
             }
                 
         }
@@ -27,5 +28,7 @@ public class Toilet : MonoBehaviour,
     public void Fix()
     {
         GameManager.Instance.UImanager.SetToiletComplete();
+        Debug.Log("fixed toilet");
+        // Objective done
     }
 }
