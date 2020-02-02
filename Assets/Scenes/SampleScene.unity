@@ -2588,6 +2588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945787579}
   - component: {fileID: 945787578}
+  - component: {fileID: 945787577}
   m_Layer: 0
   m_Name: RoombaCamera
   m_TagString: Untagged
@@ -2595,6 +2596,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &945787577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945787576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f01dadb2cedc947a96ce88223a144c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &945787578
 Camera:
   m_ObjectHideFlags: 0
@@ -5748,6 +5761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021947752}
   - component: {fileID: 2021947751}
+  - component: {fileID: 2021947750}
   m_Layer: 0
   m_Name: CatCamera
   m_TagString: Untagged
@@ -5755,6 +5769,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2021947750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021947749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f01dadb2cedc947a96ce88223a144c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &2021947751
 Camera:
   m_ObjectHideFlags: 0
