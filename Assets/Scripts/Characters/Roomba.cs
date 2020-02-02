@@ -130,13 +130,13 @@ public class Roomba : MonoBehaviour,
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (hasTool)
             return;
-        if(collider.gameObject.GetComponent<Tool>() != null)
+        if(collision.collider.gameObject.GetComponent<Tool>() != null)
         {
-            currentTool = collider.gameObject.GetComponent<Tool>();
+            currentTool = collision.collider.gameObject.GetComponent<Tool>();
             currentTool.PickUp();
         }
     }

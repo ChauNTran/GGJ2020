@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     {
         get { return instance; }
     }
-
-    [SerializeField] public Text timerUI;
+    public UIManager UImanager { get; private set; }
 
     public float timeLeft = 180.0f;
 
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
+        UImanager = GetComponentInChildren<UIManager>();
     }
 
     void Update()
@@ -31,23 +31,15 @@ public class GameManager : MonoBehaviour
         runTimer();
     }
 
-    public void runTimer(){
+    public void runTimer()
+    {
+
         timeLeft -= Time.deltaTime;
-        //Debug.Log("Time left: " + Mathf.Round(Time.deltaTime));
-        //timeLeft = Mathf.Round(timeLeft);
-        timerUI.text = "Time Remaining: " + Mathf.RoundToInt(timeLeft).ToString();
+
         if ( timeLeft < 0 )
         {
             //GameOver();
         }
     }
 
-    public void ProcessObjective(bool isDone)
-    {
-
-    }
-    public void ProcessObjective(float progreess)
-    {
-
-    }
 }

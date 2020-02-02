@@ -6,7 +6,6 @@ public class Toilet : MonoBehaviour,
                       IFixable
 {
 
-    public plungerUIHandler plungerUIController;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -22,11 +21,11 @@ public class Toilet : MonoBehaviour,
     }
     public void HasTool()
     {
-        plungerUIController.SetStatusAcquired();
+        GameManager.Instance.UImanager.SetPlungerAccquire();
 
     }
     public void Fix()
     {
-        plungerUIController.SetStatusCompleted();
+        GameManager.Instance.UImanager.SetToiletComplete();
     }
 }
