@@ -132,7 +132,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
 --- !u!114 &227748376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb57919cee33ca4f87c54259e9b60e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectiveName: 
+  isCompleted: 0
   _canMess: 1
   dirtPrefabGO: {fileID: 4706060100748082112, guid: 0ac1fb5701d350742be5279b70c4dab6,
     type: 3}
@@ -179,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 1729052999365618881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729052999097684831}
   m_RootOrder: 0

@@ -14,7 +14,14 @@ public class GameManager : MonoBehaviour
 
     public List<Objective> objectiveList = new List<Objective>();
 
+    public List<Transform> allObjectiveTransform = new List<Transform>();
+    public List<Transform> allToolTransform = new List<Transform>();
+
+    public List<Transform> objectiveSpawns = new List<Transform>();
+    public List<Transform> toolSpawns = new List<Transform>();
+
     public float timeLeft = 180.0f;
+    private bool gameOver = false;
 
     private void Awake()
     {
@@ -25,9 +32,37 @@ public class GameManager : MonoBehaviour
 
         UImanager = GetComponentInChildren<UIManager>();
     }
+    private void Start()
+    {
+        gameOver = false;
 
+        RandomSpawnOjectives();
+        RandomSpawnTools();
+    }
+
+    void RandomSpawnOjectives()
+    {
+        List<Transform> randomized_objectiveSpawn = ShuffleTransformList(objectiveSpawns);
+
+        foreach(var obj in allObjectiveTransform)
+        {
+            obj.position = randomized_objectiveSpawn[allObjectiveTransform.IndexOf(obj)].position;
+        }
+    }
+    void RandomSpawnTools()
+    {
+        List<Transform> randomized_toolSpawn = ShuffleTransformList(toolSpawns);
+
+        foreach (var obj in allToolTransform)
+        {
+            obj.position = randomized_toolSpawn[allToolTransform.IndexOf(obj)].position;
+        }
+    }
     void Update()
     {
+        if (gameOver)
+            return;
+
         runTimer();
     }
 
@@ -73,15 +108,36 @@ public class GameManager : MonoBehaviour
     void CatWin()
     {
         Debug.Log("CatWin");
+        gameOver = true;
         UImanager.DisplayCatwin();
     }
     void RoombaWin()
     {
         Debug.Log("RoombaWin");
+        gameOver = true;
         UImanager.DisplayRoombaWin();
     }
     private void GameOver()
     {
+        gameOver = true;
         UImanager.DisPlayTimeOut();
+    }
+
+    private List<Transform> ShuffleTransformList(List<Transform> transformList)
+    {
+        // place them randomly
+        // Knuth-Fisher-Yates algorithm
+        List<Transform> shuffle_transform_list = transformList;
+        int start = 0;
+        int end = shuffle_transform_list.Count - 1;
+        for (int i = end; i > 0; i--)
+        {
+            int swapWithPos = Random.Range(start, i + 1);
+            // Swap the value at the "current" position (i) with value at swapWithPos
+            Transform tmp = shuffle_transform_list[i];
+            shuffle_transform_list[i] = shuffle_transform_list[swapWithPos];
+            shuffle_transform_list[swapWithPos] = tmp;
+        }
+        return shuffle_transform_list;
     }
 }
