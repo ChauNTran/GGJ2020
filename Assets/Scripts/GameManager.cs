@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public float timeLeft = 180.0f;
     private bool gameOver = false;
+    private string currentSceneName;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         UImanager = GetComponentInChildren<UIManager>();
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
     private void Start()
     {
@@ -105,12 +108,7 @@ public class GameManager : MonoBehaviour
         }
         return roombaWin;
     }
-    void CatWin()
-    {
-        Debug.Log("CatWin");
-        gameOver = true;
-        UImanager.DisplayCatwin();
-    }
+
     void RoombaWin()
     {
         Debug.Log("RoombaWin");
@@ -139,5 +137,10 @@ public class GameManager : MonoBehaviour
             shuffle_transform_list[swapWithPos] = tmp;
         }
         return shuffle_transform_list;
+    }
+
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene(currentSceneName);
     }
 }
