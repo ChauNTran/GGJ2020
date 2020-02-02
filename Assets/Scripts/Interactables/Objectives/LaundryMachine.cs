@@ -5,6 +5,11 @@ using UnityEngine;
 public class LaundryMachine : Objective,
                               IFixable
 {
+    private Animator animator;
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.gameObject.GetComponent<Roomba>() != null)
@@ -24,6 +29,7 @@ public class LaundryMachine : Objective,
     }
     public void Fix()
     {
+        animator.SetTrigger("fix");
         isCompleted = true;
         GameManager.Instance.ObjectiveComplete(this);
         GameManager.Instance.UImanager.SetClothesComplete();

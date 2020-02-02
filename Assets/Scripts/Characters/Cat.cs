@@ -23,6 +23,7 @@ public class Cat : MonoBehaviour,
     [SerializeField] private string _horizontalButtonLabel = "Horizontal";
     [SerializeField] private string _verticalButtonLabel = "Vertical";
     [SerializeField] private float _movementSpeed = 1.5f;
+    [SerializeField] private float _slowDownSpeed = 1.5f;
 
     public string horizontalButtonLabel
     {
@@ -43,7 +44,7 @@ public class Cat : MonoBehaviour,
     [SerializeField] private bool moveWithPhysics = true;
 
     private bool tookNap = true;
-
+    private float _speed;
     private Rigidbody2D rigid;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -53,6 +54,7 @@ public class Cat : MonoBehaviour,
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        _speed = movementSpeed;
     }
 
     void FixedUpdate()
@@ -94,7 +96,7 @@ public class Cat : MonoBehaviour,
     public void MoveTransform(float xVal, float yVal)
     {
         //Debug.Log($"xVal {xVal} yVal {yVal}");
-        transform.position += new Vector3(xVal * Time.deltaTime * _movementSpeed, yVal * Time.deltaTime * _movementSpeed, 0);
+        transform.position += new Vector3(xVal * Time.deltaTime * _speed, yVal * Time.deltaTime * _speed, 0);
     }
     void PlayAnimation(float xVal,float yVal)
     {
@@ -146,6 +148,8 @@ public class Cat : MonoBehaviour,
     }
     public void setTookNap()
     {
+        _speed = movementSpeed;
+        animator.SetBool("isTired", false);
         tookNap = true;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -158,8 +162,9 @@ public class Cat : MonoBehaviour,
             if (collision.collider.gameObject.GetComponentInParent<IBreakable>().canMess)
             {
                 collision.collider.gameObject.GetComponentInParent<IBreakable>().MessUp();
+                _speed = _slowDownSpeed;
+                animator.SetBool("isTired", true);
                 tookNap = false;
-                Debug.Log("mess " + collision.collider.name);
             }
         }
     }
