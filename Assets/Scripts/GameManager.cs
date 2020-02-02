@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         if ( timeLeft < 0 )
         {
-            //GameOver();
+            GameOver();
         }
     }
     public void ObjectiveComplete(Objective obj)
@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
         {
             objectiveList.Add(obj);
         }
+        if (obj is DirtPot)
+            UImanager.SetPotUIActive();
     }
     private bool CheckForRoombaWinCondition()
     {

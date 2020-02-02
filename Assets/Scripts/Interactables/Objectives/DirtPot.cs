@@ -45,6 +45,7 @@ public class DirtPot : Objective,
         if (activeDirtCount == 0)
         {
             isCompleted = true;
+            GameManager.Instance.UImanager.SetPotCompleted();
             GameManager.Instance.ObjectiveComplete(this);
             _canMess = true;
 

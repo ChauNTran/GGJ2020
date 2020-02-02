@@ -30,6 +30,15 @@ public class dirtUI : MonoBehaviour
 
     public void SetStatusCompleted()
     {
+        potImage.color = new Color(1, 1, 1, 1f);
         checkSprite.SetActive(true);
+    }
+    public void SetStatusNotCompleted()
+    {
+        dirtUIgo.SetActive(true);
+
+        potImage.color = new Color(1, 1, 1, 0.3f);
+
+        checkSprite.SetActive(false);
     }
 }
