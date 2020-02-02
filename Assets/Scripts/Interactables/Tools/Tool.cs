@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactables : MonoBehaviour
+public class Tool : MonoBehaviour
 {
-
-    public float completePercentage;
-    public bool isDone;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,5 +33,9 @@ public class Interactables : MonoBehaviour
         {
             child.gameObject.layer = 10;
         }
+    }
+    public virtual void PickUp()
+    {
+        gameObject.SetActive(false);
     }
 }

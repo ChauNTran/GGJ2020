@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DirtPot : MonoBehaviour,
-                       IBreakable
+                       IBreakable,
+                       IFixable
 {
     [SerializeField] private bool _canMess = true;
     public bool canMess

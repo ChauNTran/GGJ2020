@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBreakable
+public interface IFixable
 {
-    bool canMess { get; set; }
-    void MessUp();
+    void Fix();
 }
