@@ -133,6 +133,7 @@ public class Roomba : MonoBehaviour,
         {
             currentTool = collision.collider.gameObject.GetComponent<Tool>();
             currentTool.PickUp();
+            hasTool = true;
         }
     }
     public void removeTool()

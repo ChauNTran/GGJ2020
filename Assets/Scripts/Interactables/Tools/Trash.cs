@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletPlunger : Tool
+public class Trash : Tool
 {
-    public Toilet toilet;
+    public TrashCan trashCan;
 
     private void Start()
     {
-        if(toilet == null)
+        if (trashCan == null)
         {
-            toilet = FindObjectOfType<Toilet>();
+            trashCan = FindObjectOfType<TrashCan>();
         }
     }
     public override void PickUp()
     {
         base.PickUp();
-        toilet.HasTool();
+        trashCan.HasTool();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Toilet : MonoBehaviour,
+public class Toilet : Objective,
                       IFixable
 {
 
@@ -23,12 +23,13 @@ public class Toilet : MonoBehaviour,
     public void HasTool()
     {
         GameManager.Instance.UImanager.SetPlungerAccquire();
-
     }
     public void Fix()
     {
+        isCompleted = true;
+        GameManager.Instance.ObjectiveComplete(this);
         GameManager.Instance.UImanager.SetToiletComplete();
-        Debug.Log("fixed toilet");
+        
         // Objective done
     }
 }

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletPlunger : Tool
+public class Clothes : Tool
 {
-    public Toilet toilet;
+    public LaundryMachine toilet;
 
     private void Start()
     {
-        if(toilet == null)
+        if (toilet == null)
         {
-            toilet = FindObjectOfType<Toilet>();
+            toilet = FindObjectOfType<LaundryMachine>();
         }
     }
     public override void PickUp()

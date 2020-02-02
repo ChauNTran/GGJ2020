@@ -9,12 +9,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private plungerUIHandler plungerUIRoomba;
     [SerializeField] private clothesUI clothesUIRoomba;
     [SerializeField] private trashUI trashUIRoomba;
-
+    [SerializeField] private gameoverUI gameoverUIRoomba;
     [Header("Cat Canvas")]
     [SerializeField] private plungerUIHandler plungerUICat;
     [SerializeField] private clothesUI clothesUICat;
     [SerializeField] private trashUI trashUICat;
-
+    [SerializeField] private gameoverUI gameoverUICat;
 
     public void SetPlungerAccquire()
     {
@@ -47,5 +47,20 @@ public class UIManager : MonoBehaviour
     {
         trashUIRoomba.SetStatusCompleted();
         trashUICat.SetStatusCompleted();
+    }
+    public void DisPlayTimeOut()
+    {
+        gameoverUIRoomba.DisPlayTimeOut();
+        gameoverUICat.DisPlayTimeOut();
+    }
+    public void DisplayRoombaWin()
+    {
+        gameoverUIRoomba.DisplayRoombaWin();
+        gameoverUICat.DisplayRoombaWin();
+    }
+    public void DisplayCatwin()
+    {
+        gameoverUIRoomba.DisplayCatwin();
+        gameoverUICat.DisplayCatwin();
     }
 }

@@ -10,7 +10,7 @@ public class clothesUI : MonoBehaviour
 
     void Start()
     {
-        clothesImage.color = new Color(1, 1, 1, 0.5f);
+        clothesImage.color = new Color(1, 1, 1, 0.3f);
 
         checkSprite.SetActive(false);
     }

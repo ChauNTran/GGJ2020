@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirtPot : MonoBehaviour,
+public class DirtPot : Objective,
                        IBreakable,
                        IFixable
 {
@@ -27,23 +27,30 @@ public class DirtPot : MonoBehaviour,
             go.SetActive(false);
         }
     }
-    public void Fix()
-    {
-        activeDirtCount --;
-        if (activeDirtCount == 0)
-            _canMess = true;
-    }
     public void MessUp()
     {
         _canMess = false;
-
-        foreach(var dirt in dirtGOs)
+        isCompleted = false;
+        GameManager.Instance.ObjectiveOpen(this);
+        foreach (var dirt in dirtGOs)
         {
             dirt.gameObject.SetActive(true);
             dirt.transform.position = dirtSpawnPositions[dirtGOs.IndexOf(dirt)].position;
             activeDirtCount++;
         }
     }
+    public void Fix()
+    {
+        activeDirtCount --;
+        if (activeDirtCount == 0)
+        {
+            isCompleted = true;
+            GameManager.Instance.ObjectiveComplete(this);
+            _canMess = true;
+
+        }
+    }
+
     public void ResetObject()
     {
         _canMess = true;
