@@ -7570,7 +7570,7 @@ MonoBehaviour:
   - {fileID: 332196884}
   - {fileID: 252531218}
   - {fileID: 405165348}
-  timeLeft: 120
+  timeLeft: 2
 --- !u!4 &1647333514
 Transform:
   m_ObjectHideFlags: 0
@@ -8039,7 +8039,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: -9145116460676262861, guid: 7b4fef1150bf25d419f403b91ecc3e3e,
     type: 3}
-  m_Color: {r: 1, g: 0.7662338, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
