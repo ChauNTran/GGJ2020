@@ -12,7 +12,7 @@ public class trashUI : MonoBehaviour
     {
         //load sprites
         //trashImage = GetComponent<UnityEngine.UI.Image>();
-        trashImage.color = new Color(1, 1, 1, 0.5f);
+        trashImage.color = new Color(1, 1, 1, 0.3f);
 
         checkSprite.SetActive(false);
     }

@@ -12,7 +12,7 @@ public class plungerUIHandler : MonoBehaviour
     {
         //load sprites
         //plungerImage = GetComponent<UnityEngine.UI.Image>();
-        plungerImage.color = new Color(1, 1, 1, 0.5f);
+        plungerImage.color = new Color(1, 1, 1, 0.3f);
 
         checkSprite.SetActive(false);
     }

@@ -10,9 +10,7 @@ public class clothesUI : MonoBehaviour
 
     void Start()
     {
-        //load sprites
-        //clothesImage = GetComponent<UnityEngine.UI.Image>();
-        clothesImage.color = new Color(1, 1, 1, 0.5f);
+        clothesImage.color = new Color(1, 1, 1, 0.3f);
 
         checkSprite.SetActive(false);
     }
