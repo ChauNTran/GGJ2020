@@ -39,7 +39,7 @@ public class DirtPot : Objective,
             activeDirtCount++;
         }
     }
-    public void Fix()
+    public void Fix(Tool tool = null)
     {
         activeDirtCount --;
         if (activeDirtCount == 0)

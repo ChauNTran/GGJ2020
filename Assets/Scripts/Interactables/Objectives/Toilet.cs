@@ -11,13 +11,15 @@ public class Toilet : Objective,
     {
         animator = GetComponentInChildren<Animator>();
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.GetComponent<Roomba>() != null)
+        base.OnCollisionEnter2D(collision);
+        if (collision.collider.gameObject.GetComponent<Roomba>().currentTool != null)
         {
-            if (collision.collider.gameObject.GetComponent<Roomba>().currentTool is ToiletPlunger)
+            Tool currentTool = collision.collider.gameObject.GetComponent<Roomba>().currentTool;
+            if (currentTool is ToiletPlunger)
             {
-                Fix();
+                Fix(currentTool);
                 collision.collider.gameObject.GetComponent<Roomba>().removeTool();
                 
             }
@@ -28,11 +30,11 @@ public class Toilet : Objective,
     {
         GameManager.Instance.UImanager.SetPlungerAccquire();
     }
-    public void Fix()
+    public void Fix(Tool tool = null)
     {
         animator.SetTrigger("fix");
         isCompleted = true;
-        GameManager.Instance.ObjectiveComplete(this);
+        GameManager.Instance.ObjectiveComplete(this, tool);
         GameManager.Instance.UImanager.SetToiletComplete();
         
         // Objective done

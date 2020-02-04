@@ -12,13 +12,15 @@ public class TrashCan : Objective,
         TrashSprite.SetActive(false);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.GetComponent<Roomba>() != null)
+        base.OnCollisionEnter2D(collision);
+        if (collision.collider.gameObject.GetComponent<Roomba>().currentTool != null)
         {
+            Tool currentTool = collision.collider.gameObject.GetComponent<Roomba>().currentTool;
             if (collision.collider.gameObject.GetComponent<Roomba>().currentTool is Trash)
             {
-                Fix();
+                Fix(currentTool);
                 collision.collider.gameObject.GetComponent<Roomba>().removeTool();
 
             }
@@ -29,7 +31,7 @@ public class TrashCan : Objective,
     {
         GameManager.Instance.UImanager.SetTrashAccquire();
     }
-    public void Fix()
+    public void Fix(Tool tool = null)
     {
         isCompleted = true;
         TrashSprite.SetActive(true);

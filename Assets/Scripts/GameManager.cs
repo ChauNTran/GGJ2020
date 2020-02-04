@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     public List<Transform> objectiveSpawns = new List<Transform>();
     public List<Transform> toolSpawns = new List<Transform>();
 
+    private List<Transform> leftOverTools;
     public float timeLeft = 180.0f;
-    private bool gameOver = false;
+    public bool gameOver { get { return _gameOver; } }
+    private bool _gameOver = false;
     private string currentSceneName;
 
     private void Awake()
@@ -37,10 +39,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        gameOver = false;
+        _gameOver = false;
 
         RandomSpawnOjectives();
         RandomSpawnTools();
+        leftOverTools = allToolTransform;
     }
 
     void RandomSpawnOjectives()
@@ -63,7 +66,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (gameOver)
+        if (_gameOver)
             return;
 
         runTimer();
@@ -79,8 +82,11 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
     }
-    public void ObjectiveComplete(Objective obj)
+    public void ObjectiveComplete(Objective obj, Tool tool = null)
     {
+        if (tool != null)
+            leftOverTools.Remove(tool.transform);
+
         Debug.Log(obj.gameObject.name);
         if (CheckForRoombaWinCondition())
             RoombaWin();
@@ -112,15 +118,23 @@ public class GameManager : MonoBehaviour
     void RoombaWin()
     {
         Debug.Log("RoombaWin");
-        gameOver = true;
+        _gameOver = true;
         UImanager.DisplayRoombaWin();
     }
     private void GameOver()
     {
-        gameOver = true;
+        _gameOver = true;
+        ShowLeftOverTools();
         UImanager.DisPlayTimeOut();
     }
-
+    private void ShowLeftOverTools()
+    {
+        if(leftOverTools.Count>0)
+        {
+            foreach (var _tool in leftOverTools)
+                _tool.GetComponent<Tool>().ShowInteractableAllLayers();
+        }
+    }
     private List<Transform> ShuffleTransformList(List<Transform> transformList)
     {
         // place them randomly

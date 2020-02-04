@@ -20,7 +20,7 @@ public class Tool : MonoBehaviour
         }
     }
 
-    private void ShowInteractableAllLayers()
+    public void ShowInteractableAllLayers()
     {
         foreach (Transform child in transform)
         {

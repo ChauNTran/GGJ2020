@@ -154,6 +154,8 @@ public class Cat : MonoBehaviour,
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GameManager.Instance.gameOver)
+            return;
         if (tookNap != true)
             return;
 

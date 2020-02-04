@@ -127,6 +127,8 @@ public class Roomba : MonoBehaviour,
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GameManager.Instance.gameOver)
+            return;
         if (hasTool)
             return;
         if(collision.collider.gameObject.GetComponent<Tool>() != null)
